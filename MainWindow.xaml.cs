@@ -74,5 +74,24 @@ namespace ManageYourTime
                 TaskTitle.Text = "";
             }
         }
+
+
+
+        private void RemoveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.listView.Items.Count < 1)
+            {
+                MessageBox.Show("Nie masz obecnie żadnych zadań do usunięcia");
+                return;
+            }
+            if(tasksCollection.WybranyTask == null)
+            {
+                MessageBox.Show("Zaznacz zadanie do usunięcia");
+            }
+            else
+            {
+                tasksCollection.ListwithTasks.Remove(tasksCollection.WybranyTask);
+            }
+        }
     }
 }

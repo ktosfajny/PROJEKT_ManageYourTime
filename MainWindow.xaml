@@ -122,7 +122,7 @@
 
 
                     <Button x:Name="AddBtn"  Content="Dodaj" Grid.Column="0" Grid.Row="0" Click="AddBtn_Click"/>
-                    <Button x:Name="RemoveBtn" Content="Usuń" Grid.Column="1"  Grid.Row="0"/>
+                    <Button x:Name="RemoveBtn" Content="Usuń" Grid.Column="1"  Grid.Row="0" Click="RemoveBtn_Click"/>
 
                     <Button x:Name="saveButton" Content="Zapisz" Grid.Column="0"  Grid.Row="1"/>
                     <Button x:Name="loadButton" Content="Wczytaj" Grid.Column="1"  Grid.Row="1"/>
