@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 namespace ManageYourTime
 {
-    public class Task
+    [Serializable]
+    public class Task : ISerializable
     {
         public int Nr { get; set; }
 
@@ -26,6 +30,27 @@ namespace ManageYourTime
             this.Tytul = tytul;
             this.Rodzaj = rodzaj;
             this.Data = data;
+        }
+
+
+
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Nr", Nr);
+            info.AddValue("Tytul", Tytul);
+            info.AddValue("Rodzaj", Rodzaj);
+            info.AddValue("Data", Data);
+        }
+
+
+
+        public Task(SerializationInfo info, StreamingContext ctxt)
+        {
+            Nr = (int)info.GetValue("Nr", typeof(int));
+            Tytul = (string)info.GetValue("Tytul", typeof(string));
+            Rodzaj = (string)info.GetValue("Rodzaj", typeof(string));
+            Data = (string)info.GetValue("Data", typeof(string));
         }
     }
 }

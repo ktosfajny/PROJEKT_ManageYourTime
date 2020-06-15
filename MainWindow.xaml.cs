@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Runtime.CompilerServices;
 namespace ManageYourTime
 {
     /// <summary>
@@ -126,6 +127,34 @@ namespace ManageYourTime
             columnView.SortDescriptions.Clear();
 
             columnView.SortDescriptions.Add(new SortDescription(headerName, sortDirection));
+        }
+
+
+
+
+
+
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            Serializer.serializeCollection(tasksCollection.ListwithTasks);
+
+            MessageBox.Show("Zapisano listę zadań!");
+        }
+
+
+
+        private void loadButton_Click(object sender, RoutedEventArgs e)
+        {
+            tasksCollection.ListwithTasks.Clear();
+
+            ObservableCollection<Task> savedList = Serializer.deserializeCollection();
+
+            foreach (Task oldTask in savedList)
+            {
+                tasksCollection.ListwithTasks.Add(oldTask);
+            }
+
+            MessageBox.Show("wczytano listę zadań!");
         }
     }
 }
