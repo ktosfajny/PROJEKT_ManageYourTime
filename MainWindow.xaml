@@ -121,11 +121,37 @@
                     </Grid.RowDefinitions>
 
 
-                    <Button x:Name="AddBtn"  Content="Dodaj" Grid.Column="0" Grid.Row="0" Click="AddBtn_Click"/>
-                    <Button x:Name="RemoveBtn" Content="Usuń" Grid.Column="1"  Grid.Row="0" Click="RemoveBtn_Click"/>
+                    <Button x:Name="AddBtn"  Content="Dodaj" Grid.Column="0" Grid.Row="0" Click="AddBtn_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <TextBlock Text="Dodaj zadanie do listy"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    
+                    <Button x:Name="RemoveBtn" Content="Usuń" Grid.Column="1"  Grid.Row="0" Click="RemoveBtn_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <TextBlock Text="Usuń zadanie z listy"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
 
-                    <Button x:Name="saveButton" Content="Zapisz" Grid.Column="0"  Grid.Row="1" Click="saveButton_Click"/>
-                    <Button x:Name="loadButton" Content="Wczytaj" Grid.Column="1"  Grid.Row="1" Click="loadButton_Click"/>
+                    <Button x:Name="saveButton" Content="Zapisz" Grid.Column="0"  Grid.Row="1" Click="saveButton_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <TextBlock Text="Zapisz listę aby po wyjściu z programu nie stracić danych"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    
+                    <Button x:Name="loadButton" Content="Wczytaj" Grid.Column="1"  Grid.Row="1" Click="loadButton_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <TextBlock Text="Wczytaj zapisane zadania"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
 
                 </Grid>
 
