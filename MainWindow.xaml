@@ -61,19 +61,19 @@
 
 
                             <GridViewColumn Width="60" DisplayMemberBinding="{Binding Nr}">
-                                <GridViewColumnHeader Content="Nr"/>
+                                <GridViewColumnHeader Content="Nr" Click="GridViewColumnHeader_Click"/>
                             </GridViewColumn>
 
-                            <GridViewColumn Width="530" DisplayMemberBinding="{Binding Nazwa}">
-                                <GridViewColumnHeader Content="Tytuł"/>
+                            <GridViewColumn Width="530" DisplayMemberBinding="{Binding Tytul}">
+                                <GridViewColumnHeader Content="Tytul" Click="GridViewColumnHeader_Click"/>
                             </GridViewColumn>
 
                             <GridViewColumn Width="80" DisplayMemberBinding="{Binding Rodzaj}">
-                                <GridViewColumnHeader Content="Rodzaj"/>
+                                <GridViewColumnHeader Content="Rodzaj" Click="GridViewColumnHeader_Click"/>
                             </GridViewColumn>
 
                             <GridViewColumn Width="80" DisplayMemberBinding="{Binding Data}">
-                                <GridViewColumnHeader Content="Do dnia"/>
+                                <GridViewColumnHeader Content="Data" Click="GridViewColumnHeader_Click"/>
                             </GridViewColumn>
 
                         </GridView>

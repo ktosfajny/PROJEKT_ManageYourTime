@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -92,6 +93,39 @@ namespace ManageYourTime
             {
                 tasksCollection.ListwithTasks.Remove(tasksCollection.WybranyTask);
             }
+        }
+
+
+
+        private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e)
+        {
+            GridViewColumnHeader headerType = sender as GridViewColumnHeader;
+
+            string headerName = headerType.Content.ToString();
+
+            CollectionView columnView = CollectionViewSource.GetDefaultView(listView.ItemsSource) as CollectionView;
+
+            ListSortDirection sortDirection = ListSortDirection.Ascending;
+
+            if (columnView.SortDescriptions.Count > 0)
+            {
+                SortDescription sorting = columnView.SortDescriptions.FirstOrDefault();
+
+                if (sorting.Direction == ListSortDirection.Descending)
+                {
+                    sortDirection = ListSortDirection.Ascending;
+                }
+                else
+                {
+                    sortDirection = ListSortDirection.Descending;
+                }
+
+
+            }
+
+            columnView.SortDescriptions.Clear();
+
+            columnView.SortDescriptions.Add(new SortDescription(headerName, sortDirection));
         }
     }
 }
