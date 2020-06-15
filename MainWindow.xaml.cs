@@ -19,10 +19,15 @@ namespace ManageYourTime
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    { 
+        public DateTime TodayDate;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            TodayDate = DateTime.Today;
+            this.Calendarz.DisplayDateStart = this.TodayDate;
         }
     }
 }
