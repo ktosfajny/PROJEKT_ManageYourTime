@@ -19,7 +19,9 @@ namespace ManageYourTime
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    { 
+    {
+        TasksCollection tasksCollection = new TasksCollection();
+
         public DateTime TodayDate;
 
         public MainWindow()
@@ -28,6 +30,49 @@ namespace ManageYourTime
 
             TodayDate = DateTime.Today;
             this.Calendarz.DisplayDateStart = this.TodayDate;
+
+            GridPanel.DataContext = tasksCollection;
+        }
+
+        
+        
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            var TaskTitle = this.InputText;
+
+            var ComboBoxItem = this.ComboBoxDropdown.SelectionBoxItem;
+
+
+            if (TaskTitle.Text == "")
+            {
+                MessageBox.Show("dodaj tytuł zadania");
+                return;
+            }
+            else if (string.IsNullOrWhiteSpace(TaskTitle.Text))
+            {
+                MessageBox.Show("podaj poprawną nazwę");
+                return;
+            }
+            else if (!this.Calendarz.SelectedDate.HasValue)
+            {
+                MessageBox.Show("dodaj datę");
+                return;
+            }
+            else
+            {
+                tasksCollection.ListwithTasks.Add(new Task(
+                        tasksCollection.ListwithTasks.Count + 1,
+                        TaskTitle.Text,
+                        ComboBoxItem.ToString(),
+                        this.Calendarz.SelectedDate.Value.ToString("yyyy/MM/dd")
+                    )
+                 );
+
+                this.Calendarz.SelectedDate = null;
+
+                TaskTitle.Text = "";
+            }
         }
     }
 }

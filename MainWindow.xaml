@@ -31,7 +31,7 @@
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <TextBlock Text="Ilość zadań do zrobienia: "/>
-                    <TextBlock Text="0" FontWeight="bold"/>
+                    <TextBlock Text="{Binding ListwithTasks.Count}" FontWeight="bold"/>
                 </StackPanel>
             </Grid>
 
@@ -39,7 +39,7 @@
 
             <Grid Grid.Row="1">
 
-                <ListView x:Name="listView" Background="AliceBlue">
+                <ListView x:Name="listView" Background="AliceBlue" ItemsSource="{Binding ListwithTasks}" SelectedItem="{Binding WybranyTask}">
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -60,16 +60,20 @@
 
 
 
-                            <GridViewColumn Width="60">
+                            <GridViewColumn Width="60" DisplayMemberBinding="{Binding Nr}">
                                 <GridViewColumnHeader Content="Nr"/>
                             </GridViewColumn>
 
-                            <GridViewColumn Width="560">
-                                <GridViewColumnHeader Content="Tytuł: "/>
+                            <GridViewColumn Width="530" DisplayMemberBinding="{Binding Nazwa}">
+                                <GridViewColumnHeader Content="Tytuł"/>
                             </GridViewColumn>
 
-                            <GridViewColumn Width="100">
-                                <GridViewColumnHeader Content="Do dnia:"/>
+                            <GridViewColumn Width="80" DisplayMemberBinding="{Binding Rodzaj}">
+                                <GridViewColumnHeader Content="Rodzaj"/>
+                            </GridViewColumn>
+
+                            <GridViewColumn Width="80" DisplayMemberBinding="{Binding Data}">
+                                <GridViewColumnHeader Content="Do dnia"/>
                             </GridViewColumn>
 
                         </GridView>
@@ -117,7 +121,7 @@
                     </Grid.RowDefinitions>
 
 
-                    <Button x:Name="AddBtn"  Content="Dodaj" Grid.Column="0" Grid.Row="0"/>
+                    <Button x:Name="AddBtn"  Content="Dodaj" Grid.Column="0" Grid.Row="0" Click="AddBtn_Click"/>
                     <Button x:Name="RemoveBtn" Content="Usuń" Grid.Column="1"  Grid.Row="0"/>
 
                     <Button x:Name="saveButton" Content="Zapisz" Grid.Column="0"  Grid.Row="1"/>
