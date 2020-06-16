@@ -68,7 +68,6 @@ namespace ManageYourTime
             else if (tasksCollection.checkIfTaskExists(TaskTitle.Text, selectedDate, isImportant))
             {
                 MessageBox.Show("Takie zadanie już istnieje");
-                return;
             }
             else
             {
@@ -82,9 +81,7 @@ namespace ManageYourTime
 
                 ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
 
-                Calendarz.SelectedDate = null;
-                Important.IsChecked = false;
-                TaskTitle.Text = "";
+                ClearAll();
             }
         }
 
@@ -147,6 +144,20 @@ namespace ManageYourTime
 
 
 
+        private void ClearAll()
+        {
+            InputText.Text = "";
+            Calendarz.SelectedDate = null;
+            Important.IsChecked = false;
+            ComboBoxDropdown.SelectedIndex = 0;
+        }
+
+        private void ClearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAll();
+        }
+
+
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             Serializer.serializeCollection(tasksCollection.ListWithTasks);
@@ -171,5 +182,7 @@ namespace ManageYourTime
 
             MessageBox.Show("wczytano listę zadań!");
         }
+
+ 
     }
 }

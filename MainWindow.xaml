@@ -34,6 +34,13 @@
                     <TextBlock Text="{Binding ListWithTasks.Count}" FontWeight="bold" Margin="0 0 15 0"/>
                     <TextBlock Text="Ilość zadań priorytetowych: "/>
                     <TextBlock FontWeight="bold" x:Name="ImportantCounter"/>
+                    <Button Content="RESET" Margin="15 0 0 0" Click="ClearBtn_Click" Padding="10 0 10 0">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <TextBlock Text="Wyczyść pola na: tytuł, datę, rodzaj oraz priorytet"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
                 </StackPanel>
             </Grid>
 
