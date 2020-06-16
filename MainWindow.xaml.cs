@@ -62,7 +62,7 @@ namespace ManageYourTime
             }
             else if (!Calendarz.SelectedDate.HasValue)
             {
-                MessageBox.Show("dodaj datę");
+                MessageBox.Show("Dodaj datę");
                 return;
             }
             else if (tasksCollection.checkIfTaskExists(TaskTitle.Text, selectedDate, isImportant))
@@ -94,13 +94,13 @@ namespace ManageYourTime
                 MessageBox.Show("Nie masz obecnie żadnych zadań do usunięcia");
                 return;
             }
-            if(tasksCollection.ChoosenTask == null)
+            if(tasksCollection.ChosenTask == null)
             {
                 MessageBox.Show("Zaznacz zadanie do usunięcia");
             }
             else
             {
-                tasksCollection.ListWithTasks.Remove(tasksCollection.ChoosenTask);
+                tasksCollection.ListWithTasks.Remove(tasksCollection.ChosenTask);
 
                 ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
             }

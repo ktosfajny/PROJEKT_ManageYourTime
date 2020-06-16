@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ManageYourTime"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="450" Width="820"
+        Height="470" Width="850"
         WindowStartupLocation="CenterScreen">
 
 
@@ -48,7 +48,7 @@
 
             <Grid Grid.Row="1">
 
-                <ListView x:Name="listView" Background="AliceBlue" ItemsSource="{Binding ListWithTasks}" SelectedItem="{Binding ChoosenTask}">
+                <ListView x:Name="listView" Background="AliceBlue" ItemsSource="{Binding ListWithTasks}" SelectedItem="{Binding ChosenTask}">
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -69,7 +69,7 @@
 
 
 
-                            <GridViewColumn Width="510" DisplayMemberBinding="{Binding Tytul}">
+                            <GridViewColumn Width="550" DisplayMemberBinding="{Binding Tytul}">
                                 <GridViewColumnHeader Content="Tytul" Click="GridViewColumnHeader_Click"/>
                             </GridViewColumn>
 
@@ -110,7 +110,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="tytuł zadania: " Grid.Row="0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Tytuł zadania: " Grid.Row="0" VerticalAlignment="Center"/>
                     <TextBox x:Name="InputText" VerticalAlignment="Center" Grid.Row="1"/>
                 </Grid>
 
@@ -149,7 +149,7 @@
                     <Button x:Name="saveButton" Content="Zapisz" Grid.Column="0"  Grid.Row="1" Click="saveButton_Click">
                         <Button.ToolTip>
                             <ToolTip>
-                                <TextBlock Text="Zapisz listę, aby po wyjściu z programu nie stracić danych"/>
+                                <TextBlock Text="Zapisz listę, aby nie stracić danych po wyjściu z programu"/>
                             </ToolTip>
                         </Button.ToolTip>
                     </Button>
@@ -175,7 +175,7 @@
                     <ComboBox x:Name="ComboBoxDropdown" SelectedIndex="0" Grid.Row="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
                         <ComboBoxItem>Spotkanie</ComboBoxItem>
                         <ComboBoxItem>Biznes</ComboBoxItem>
-                        <ComboBoxItem>Sport</ComboBoxItem>
+                        <ComboBoxItem>Rozrywka</ComboBoxItem>
                         <ComboBoxItem>Prace Domowe</ComboBoxItem>
                         <ComboBoxItem>Inne</ComboBoxItem>
                     </ComboBox>

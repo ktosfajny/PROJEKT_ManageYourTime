@@ -20,7 +20,7 @@ namespace ManageYourTime
 
         public ObservableCollection<Task> ListWithTasks { get; set; }
 
-        public Task ChoosenTask { get; set; }
+        public Task ChosenTask { get; set; }
 
         public void InitListWithTasks()
         {
