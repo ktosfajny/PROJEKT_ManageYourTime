@@ -66,11 +66,11 @@
                                 <GridViewColumnHeader Content="Tytul" Click="GridViewColumnHeader_Click"/>
                             </GridViewColumn>
 
-                            <GridViewColumn Width="80" DisplayMemberBinding="{Binding Rodzaj}">
+                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding Rodzaj}">
                                 <GridViewColumnHeader Content="Rodzaj" Click="GridViewColumnHeader_Click"/>
                             </GridViewColumn>
 
-                            <GridViewColumn Width="80" DisplayMemberBinding="{Binding Priorytet}">
+                            <GridViewColumn Width="70" DisplayMemberBinding="{Binding Priorytet}">
                                 <GridViewColumnHeader Content="Priorytet" Click="GridViewColumnHeader_Click"/>
                             </GridViewColumn>
 
@@ -142,7 +142,7 @@
                     <Button x:Name="saveButton" Content="Zapisz" Grid.Column="0"  Grid.Row="1" Click="saveButton_Click">
                         <Button.ToolTip>
                             <ToolTip>
-                                <TextBlock Text="Zapisz listę aby po wyjściu z programu nie stracić danych"/>
+                                <TextBlock Text="Zapisz listę, aby po wyjściu z programu nie stracić danych"/>
                             </ToolTip>
                         </Button.ToolTip>
                     </Button>

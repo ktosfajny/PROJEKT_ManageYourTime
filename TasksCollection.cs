@@ -25,7 +25,6 @@ namespace ManageYourTime
         public void InitListWithTasks()
         {
             ListWithTasks = new ObservableCollection<Task>();
-            ListWithTasks.Add(new Task("zrobić zakupy", "Spotkanie", false, "28-07-2020"));
         }
 
         public int getImportantTasksNumber()
