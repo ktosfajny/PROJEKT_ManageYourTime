@@ -31,10 +31,10 @@ namespace ManageYourTime
             InitializeComponent();
 
             TodayDate = DateTime.Today;
-            this.Calendarz.DisplayDateStart = this.TodayDate;
+            Calendarz.DisplayDateStart = TodayDate;
 
             GridPanel.DataContext = tasksCollection;
-            this.ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
+            ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
         }
 
         
@@ -42,11 +42,11 @@ namespace ManageYourTime
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            var TaskTitle = this.InputText;
+            var TaskTitle = InputText;
 
-            var ComboBoxItem = this.ComboBoxDropdown.SelectionBoxItem;
+            var ComboBoxItem = ComboBoxDropdown.SelectionBoxItem;
 
-            bool isImportant = this.Important.IsChecked==true? true : false;
+            bool isImportant = Important.IsChecked==true? true : false;
 
 
             if (TaskTitle.Text == "")
@@ -59,25 +59,25 @@ namespace ManageYourTime
                 MessageBox.Show("podaj poprawną nazwę");
                 return;
             }
-            else if (!this.Calendarz.SelectedDate.HasValue)
+            else if (!Calendarz.SelectedDate.HasValue)
             {
                 MessageBox.Show("dodaj datę");
                 return;
             }
             else
             {
-                tasksCollection.ListwithTasks.Add(new Task(
+                tasksCollection.ListWithTasks.Add(new Task(
                         TaskTitle.Text,
                         ComboBoxItem.ToString(),
                         isImportant,
-                        this.Calendarz.SelectedDate.Value.ToString("yyyy/MM/dd")
+                        Calendarz.SelectedDate.Value.ToString("yyyy/MM/dd")
                     )
                  );
 
-                this.ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
+                ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
 
-                this.Calendarz.SelectedDate = null;
-                this.Important.IsChecked = false;
+                Calendarz.SelectedDate = null;
+                Important.IsChecked = false;
                 TaskTitle.Text = "";
             }
         }
@@ -91,15 +91,15 @@ namespace ManageYourTime
                 MessageBox.Show("Nie masz obecnie żadnych zadań do usunięcia");
                 return;
             }
-            if(tasksCollection.WybranyTask == null)
+            if(tasksCollection.ChoosenTask == null)
             {
                 MessageBox.Show("Zaznacz zadanie do usunięcia");
             }
             else
             {
-                tasksCollection.ListwithTasks.Remove(tasksCollection.WybranyTask);
+                tasksCollection.ListWithTasks.Remove(tasksCollection.ChoosenTask);
 
-                this.ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
+                ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
             }
         }
 
@@ -141,11 +141,9 @@ namespace ManageYourTime
 
 
 
-
-
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            Serializer.serializeCollection(tasksCollection.ListwithTasks);
+            Serializer.serializeCollection(tasksCollection.ListWithTasks);
 
             MessageBox.Show("Zapisano listę zadań!");
         }
@@ -154,13 +152,13 @@ namespace ManageYourTime
 
         private void loadButton_Click(object sender, RoutedEventArgs e)
         {
-            tasksCollection.ListwithTasks.Clear();
+            tasksCollection.ListWithTasks.Clear();
 
             ObservableCollection<Task> savedList = Serializer.deserializeCollection();
 
             foreach (Task oldTask in savedList)
             {
-                tasksCollection.ListwithTasks.Add(oldTask);
+                tasksCollection.ListWithTasks.Add(oldTask);
             }
 
             ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();

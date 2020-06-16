@@ -18,21 +18,21 @@ namespace ManageYourTime
         }
 
 
-        public ObservableCollection<Task> ListwithTasks { get; set; }
+        public ObservableCollection<Task> ListWithTasks { get; set; }
 
-        public Task WybranyTask { get; set; }
+        public Task ChoosenTask { get; set; }
 
         public void InitListWithTasks()
         {
-            ListwithTasks = new ObservableCollection<Task>();
-            ListwithTasks.Add(new Task("zrobić zakupy", "Spotkanie", false, "28-07-2020"));
+            ListWithTasks = new ObservableCollection<Task>();
+            ListWithTasks.Add(new Task("zrobić zakupy", "Spotkanie", false, "28-07-2020"));
         }
 
         public int getImportantTasksNumber()
         {
             int ImportantTasksNumber = 0;
 
-            foreach (Task task in ListwithTasks)
+            foreach (Task task in ListWithTasks)
             {
                 if (task.Priorytet)
                 {

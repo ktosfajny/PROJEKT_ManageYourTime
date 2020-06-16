@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ManageYourTime"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="450" Width="800"
+        Height="450" Width="820"
         WindowStartupLocation="CenterScreen">
 
 
@@ -31,7 +31,7 @@
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <TextBlock Text="Ilość zadań do zrobienia: "/>
-                    <TextBlock Text="{Binding ListwithTasks.Count}" FontWeight="bold" Margin="0 0 10 0"/>
+                    <TextBlock Text="{Binding ListWithTasks.Count}" FontWeight="bold" Margin="0 0 10 0"/>
                     <TextBlock Text="Ilość zadań priorytetowych: "/>
                     <TextBlock FontWeight="bold" x:Name="ImportantCounter"/>
                 </StackPanel>
@@ -41,7 +41,7 @@
 
             <Grid Grid.Row="1">
 
-                <ListView x:Name="listView" Background="AliceBlue" ItemsSource="{Binding ListwithTasks}" SelectedItem="{Binding WybranyTask}">
+                <ListView x:Name="listView" Background="AliceBlue" ItemsSource="{Binding ListWithTasks}" SelectedItem="{Binding ChoosenTask}">
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
