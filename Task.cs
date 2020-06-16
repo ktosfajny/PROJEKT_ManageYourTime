@@ -10,25 +10,23 @@ namespace ManageYourTime
     [Serializable]
     public class Task : ISerializable
     {
-        public int Nr { get; set; }
 
         public string Tytul { get; set; }
 
         public string Rodzaj { get; set; }
 
+        public bool Priorytet { get; set; }
+
         public string Data { get; set; }
 
 
-        public Task()
-        {
-            Nr = 1;
-        }
 
-        public Task(int nr, string tytul, string rodzaj, string data)
+        public Task(string tytul, string rodzaj, bool priorytet, string data)
         {
-            this.Nr = nr;
+            
             this.Tytul = tytul;
             this.Rodzaj = rodzaj;
+            this.Priorytet = priorytet;
             this.Data = data;
         }
 
@@ -37,9 +35,9 @@ namespace ManageYourTime
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("Nr", Nr);
             info.AddValue("Tytul", Tytul);
             info.AddValue("Rodzaj", Rodzaj);
+            info.AddValue("Priorytet", Priorytet);
             info.AddValue("Data", Data);
         }
 
@@ -47,9 +45,9 @@ namespace ManageYourTime
 
         public Task(SerializationInfo info, StreamingContext ctxt)
         {
-            Nr = (int)info.GetValue("Nr", typeof(int));
             Tytul = (string)info.GetValue("Tytul", typeof(string));
             Rodzaj = (string)info.GetValue("Rodzaj", typeof(string));
+            Priorytet = (bool)info.GetValue("Priorytet", typeof(bool));
             Data = (string)info.GetValue("Data", typeof(string));
         }
     }

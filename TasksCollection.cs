@@ -25,7 +25,23 @@ namespace ManageYourTime
         public void InitListWithTasks()
         {
             ListwithTasks = new ObservableCollection<Task>();
-            ListwithTasks.Add(new Task(1, "zrobić zakupy", "Spotkanie", "28-07-2020"));
+            ListwithTasks.Add(new Task("zrobić zakupy", "Spotkanie", false, "28-07-2020"));
+        }
+
+        public int getImportantTasksNumber()
+        {
+            int ImportantTasksNumber = 0;
+
+            foreach (Task task in ListwithTasks)
+            {
+                if (task.Priorytet)
+                {
+                    ImportantTasksNumber++;
+                }
+            }
+
+            return ImportantTasksNumber;
+
         }
 
 

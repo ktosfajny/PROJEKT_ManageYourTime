@@ -34,6 +34,7 @@ namespace ManageYourTime
             this.Calendarz.DisplayDateStart = this.TodayDate;
 
             GridPanel.DataContext = tasksCollection;
+            this.ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
         }
 
         
@@ -44,6 +45,8 @@ namespace ManageYourTime
             var TaskTitle = this.InputText;
 
             var ComboBoxItem = this.ComboBoxDropdown.SelectionBoxItem;
+
+            bool isImportant = this.Important.IsChecked==true? true : false;
 
 
             if (TaskTitle.Text == "")
@@ -64,15 +67,17 @@ namespace ManageYourTime
             else
             {
                 tasksCollection.ListwithTasks.Add(new Task(
-                        tasksCollection.ListwithTasks.Count + 1,
                         TaskTitle.Text,
                         ComboBoxItem.ToString(),
+                        isImportant,
                         this.Calendarz.SelectedDate.Value.ToString("yyyy/MM/dd")
                     )
                  );
 
-                this.Calendarz.SelectedDate = null;
+                this.ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
 
+                this.Calendarz.SelectedDate = null;
+                this.Important.IsChecked = false;
                 TaskTitle.Text = "";
             }
         }
@@ -81,7 +86,7 @@ namespace ManageYourTime
 
         private void RemoveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(this.listView.Items.Count < 1)
+            if(listView.Items.Count < 1)
             {
                 MessageBox.Show("Nie masz obecnie żadnych zadań do usunięcia");
                 return;
@@ -93,8 +98,12 @@ namespace ManageYourTime
             else
             {
                 tasksCollection.ListwithTasks.Remove(tasksCollection.WybranyTask);
+
+                this.ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
             }
         }
+
+
 
 
 
@@ -153,6 +162,8 @@ namespace ManageYourTime
             {
                 tasksCollection.ListwithTasks.Add(oldTask);
             }
+
+            ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
 
             MessageBox.Show("wczytano listę zadań!");
         }

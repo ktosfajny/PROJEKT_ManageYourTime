@@ -31,7 +31,9 @@
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <TextBlock Text="Ilość zadań do zrobienia: "/>
-                    <TextBlock Text="{Binding ListwithTasks.Count}" FontWeight="bold"/>
+                    <TextBlock Text="{Binding ListwithTasks.Count}" FontWeight="bold" Margin="0 0 10 0"/>
+                    <TextBlock Text="Ilość zadań priorytetowych: "/>
+                    <TextBlock FontWeight="bold" x:Name="ImportantCounter"/>
                 </StackPanel>
             </Grid>
 
@@ -60,16 +62,16 @@
 
 
 
-                            <GridViewColumn Width="60" DisplayMemberBinding="{Binding Nr}">
-                                <GridViewColumnHeader Content="Nr" Click="GridViewColumnHeader_Click"/>
-                            </GridViewColumn>
-
-                            <GridViewColumn Width="530" DisplayMemberBinding="{Binding Tytul}">
+                            <GridViewColumn Width="510" DisplayMemberBinding="{Binding Tytul}">
                                 <GridViewColumnHeader Content="Tytul" Click="GridViewColumnHeader_Click"/>
                             </GridViewColumn>
 
                             <GridViewColumn Width="80" DisplayMemberBinding="{Binding Rodzaj}">
                                 <GridViewColumnHeader Content="Rodzaj" Click="GridViewColumnHeader_Click"/>
+                            </GridViewColumn>
+
+                            <GridViewColumn Width="80" DisplayMemberBinding="{Binding Priorytet}">
+                                <GridViewColumnHeader Content="Priorytet" Click="GridViewColumnHeader_Click"/>
                             </GridViewColumn>
 
                             <GridViewColumn Width="80" DisplayMemberBinding="{Binding Data}">
@@ -162,7 +164,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="Rodaj: " Padding="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="Important" IsChecked="False" Content="Priorytet" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <ComboBox x:Name="ComboBoxDropdown" SelectedIndex="0" Grid.Row="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
                         <ComboBoxItem>Spotkanie</ComboBoxItem>
                         <ComboBoxItem>Biznes</ComboBoxItem>
