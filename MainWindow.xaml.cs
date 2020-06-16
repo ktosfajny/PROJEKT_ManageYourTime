@@ -42,20 +42,20 @@ namespace ManageYourTime
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            var TaskTitle = InputText;
+            var TaskTitle = InputText.Text;
 
-            var ComboBoxItem = ComboBoxDropdown.SelectionBoxItem;
+            var ComboBoxItem = ComboBoxDropdown.SelectionBoxItem.ToString();
 
             bool isImportant = Important.IsChecked==true? true : false;
 
             var selectedDate = Calendarz.SelectedDate.HasValue? Calendarz.SelectedDate.Value:TodayDate;
 
-            if (TaskTitle.Text == "")
+            if (TaskTitle == "")
             {
                 MessageBox.Show("Dodaj tytuł zadania");
                 return;
             }
-            else if (string.IsNullOrWhiteSpace(TaskTitle.Text))
+            else if (string.IsNullOrWhiteSpace(TaskTitle))
             {
                 MessageBox.Show("Podaj poprawną nazwę");
                 return;
@@ -65,17 +65,17 @@ namespace ManageYourTime
                 MessageBox.Show("Dodaj datę");
                 return;
             }
-            else if (tasksCollection.checkIfTaskExists(TaskTitle.Text, selectedDate, isImportant))
+            else if (tasksCollection.checkIfTaskExists(TaskTitle, selectedDate))
             {
-                MessageBox.Show("Takie zadanie już istnieje");
+                MessageBox.Show("Zadanie o takim tytule już istnieje w wybranym dniu");
             }
             else
             {
                 tasksCollection.ListWithTasks.Add(new Task(
-                        TaskTitle.Text,
-                        ComboBoxItem.ToString(),
+                        TaskTitle,
+                        ComboBoxItem,
                         isImportant,
-                        selectedDate.ToShortDateString()
+                        selectedDate
                     )
                  );
 

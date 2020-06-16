@@ -21,13 +21,13 @@ namespace ManageYourTime
 
 
 
-        public Task(string tytul, string rodzaj, bool priorytet, string data)
+        public Task(string tytul, string rodzaj, bool priorytet, DateTime data)
         {
             
             this.Tytul = tytul;
             this.Rodzaj = rodzaj;
             this.Priorytet = priorytet;
-            this.Data = data;
+            this.Data = data.ToShortDateString();
         }
 
 
