@@ -48,20 +48,26 @@ namespace ManageYourTime
 
             bool isImportant = Important.IsChecked==true? true : false;
 
+            var selectedDate = Calendarz.SelectedDate.HasValue? Calendarz.SelectedDate.Value:TodayDate;
 
             if (TaskTitle.Text == "")
             {
-                MessageBox.Show("dodaj tytuł zadania");
+                MessageBox.Show("Dodaj tytuł zadania");
                 return;
             }
             else if (string.IsNullOrWhiteSpace(TaskTitle.Text))
             {
-                MessageBox.Show("podaj poprawną nazwę");
+                MessageBox.Show("Podaj poprawną nazwę");
                 return;
             }
             else if (!Calendarz.SelectedDate.HasValue)
             {
                 MessageBox.Show("dodaj datę");
+                return;
+            }
+            else if (tasksCollection.checkIfTaskExists(TaskTitle.Text, selectedDate, isImportant))
+            {
+                MessageBox.Show("Takie zadanie już istnieje");
                 return;
             }
             else
@@ -70,7 +76,7 @@ namespace ManageYourTime
                         TaskTitle.Text,
                         ComboBoxItem.ToString(),
                         isImportant,
-                        Calendarz.SelectedDate.Value.ToString("yyyy/MM/dd")
+                        selectedDate.ToShortDateString()
                     )
                  );
 

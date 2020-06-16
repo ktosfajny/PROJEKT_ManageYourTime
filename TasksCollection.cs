@@ -44,5 +44,19 @@ namespace ManageYourTime
         }
 
 
+        public bool checkIfTaskExists(string TaskTitle, DateTime SelectedDate, bool IsImportant)
+        {
+            bool verdict = false;
+
+            foreach (Task task in ListWithTasks)
+            {
+                if (task.Tytul == TaskTitle && task.Data==SelectedDate.ToShortDateString() && task.Priorytet == IsImportant)
+                {
+                    verdict = true;
+                }
+            }
+
+            return verdict;
+        }
     }
 }
