@@ -18,7 +18,7 @@ using System.Runtime.CompilerServices;
 namespace ManageYourTime
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interakcja logiczna dla MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -26,20 +26,28 @@ namespace ManageYourTime
 
         public DateTime TodayDate;
 
+        /// <summary>
+        /// Ten konstruktor ładuje warstwę graficznę XAML, ustawia minimalną datę w kalendarzu na aktualną datę, ustawia kontext dla tabeli z zadaniami oraz ustawia ilość priorytetowych zdań
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
 
             TodayDate = DateTime.Today;
             Calendarz.DisplayDateStart = TodayDate;
-
+           
             GridPanel.DataContext = tasksCollection;
             ImportantCounter.Text = tasksCollection.getImportantTasksNumber().ToString();
         }
 
-        
-        
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
+
+
+        /// <summary>
+        /// Metoda ta wywoływana jest po naciśnięciu przycisku dodającego zadanie.
+        /// </summary>
+        /// <param name="sender"> Jest to przycisk dodający zadanie.</param>
+        /// <param name="e"> J</param>
+        public void AddBtn_Click(object sender, RoutedEventArgs e)
         {
 
             var TaskTitle = InputText.Text;
@@ -86,8 +94,12 @@ namespace ManageYourTime
         }
 
 
-
-        private void RemoveBtn_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Metoda ta zostaje wywołana po naciśnięciu na przycisk usuwania zadania. Usuwa ona zaznaczone zadanie.
+        /// </summary>
+        /// <param name="sender">Przycisk usuwający zadanie</param>
+        /// <param name="e"> event</param>
+        public void RemoveBtn_Click(object sender, RoutedEventArgs e)
         {
             if(listView.Items.Count < 1)
             {
@@ -109,8 +121,12 @@ namespace ManageYourTime
 
 
 
-
-        private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Metoda ta ma za zadanie posortować zadania. Naciśnięcie kolejny raz tego samego naglówka odwraca jego kolejność sortowania.
+        /// </summary>
+        /// <param name="sender"> Jest to dany nagłówek w liście z zadaniami.</param>
+        /// <param name="e"> Event</param>
+        public void GridViewColumnHeader_Click(object sender, RoutedEventArgs e)
         {
             GridViewColumnHeader headerType = sender as GridViewColumnHeader;
 
@@ -143,8 +159,10 @@ namespace ManageYourTime
 
 
 
-
-        private void ClearAll()
+        /// <summary>
+        /// Metoda ta czyści wszystkie wprowadzone przez użytkownika dane potrzebne do utworzenia nowego zadania
+        /// </summary>
+        public void ClearAll()
         {
             InputText.Text = "";
             Calendarz.SelectedDate = null;
@@ -152,13 +170,23 @@ namespace ManageYourTime
             ComboBoxDropdown.SelectedIndex = 0;
         }
 
-        private void ClearBtn_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Metoda wywołuje się po naciśnięciu przycisku RESET i ma za zadanie wywołać inną metodę: ClearAll()  
+        /// </summary>
+        /// <param name="sender">Przycisk RESET</param>
+        /// <param name="e"> Event</param>
+        public void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
             ClearAll();
         }
 
 
-        private void saveButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Metoda ta wywołuje się po naciśnięciu przycisku zapisującego zadania i ma za zadanie zapisać zadania do pliu
+        /// </summary>
+        /// <param name="sender"> Przycisk zapisujacy zadania</param>
+        /// <param name="e"> Event</param>
+        public void saveButton_Click(object sender, RoutedEventArgs e)
         {
             Serializer.serializeCollection(tasksCollection.ListWithTasks);
 
@@ -167,7 +195,12 @@ namespace ManageYourTime
 
 
 
-        private void loadButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Metoda ta wywołuje się po naciśnięciu przycisku wczytującego zapisane zadania i ma za zadanie wyświetlić zapisane zadania po uprzednim skasowaniu widniejących i niezapisanych zadań.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void loadButton_Click(object sender, RoutedEventArgs e)
         {
             tasksCollection.ListWithTasks.Clear();
 

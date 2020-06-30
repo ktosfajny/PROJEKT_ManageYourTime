@@ -14,6 +14,10 @@ namespace ManageYourTime
 {
     static class Serializer
     {
+        /// <summary>
+        /// Ta metoda ma za zadanie zapisać zadania do pliku aby można było je potem wczytać.
+        /// </summary>
+        /// <param name="taskList"> Ten argument przyjmuje listę z zadaniami będącą ObservableCollection składającą się z obiektów klasy Task </param>
         public static void serializeCollection(ObservableCollection<Task> taskList)
         {
             Stream stream = File.Open("TaskListData.dat", FileMode.Create);
@@ -25,7 +29,10 @@ namespace ManageYourTime
             stream.Close();
         }
 
-
+        /// <summary>
+        /// Ta metoda ma za zadanie odczytać zapisane zadania.
+        /// </summary>
+        /// <returns>Zwraca zapisane zadania jako ObservableCollection obiektów z klasy Task</returns>
         public static ObservableCollection<Task> deserializeCollection()
         {
             Stream stream = File.Open("TaskListData.dat", FileMode.Open);
